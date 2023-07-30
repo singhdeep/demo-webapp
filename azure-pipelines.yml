@@ -16,3 +16,11 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'deepak-app-service-connection'
+    appType: 'webApp'
+    appName: 'deepakwebapp00'
+    package: '$(System.DefaultWorkingDirectory)/*.zip'
+    deploymentMethod: 'auto'
